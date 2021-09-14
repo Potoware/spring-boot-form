@@ -1,16 +1,16 @@
 package com.potoware.springboot.form.models.domain;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class Usuario {
-	@NotEmpty
+	//@NotEmpty --Se validara desde una clase personalizada
 	private String nombre;
 	@NotEmpty
 	private String apellido;
-	@NotEmpty
+	
 	@Size(min = 3, max = 8)
 	private String username;
 	@NotEmpty
@@ -18,7 +18,7 @@ public class Usuario {
 	@NotEmpty
 	@Email
 	private String email;
-	@Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][A-Z]{1}")
+	//@Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][A-Z]{1}") --Se validara desde una clase personalizada
 	private String identificador;
 
 	
