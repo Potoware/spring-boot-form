@@ -3,7 +3,9 @@ package com.potoware.springboot.form.controller;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -34,6 +36,20 @@ public class FormController {
 	public List<String> paises(){
 		return Arrays.asList("Colombia","España","Chile","Bolivia","Alemania","Inglaterra");
 		
+	}
+	
+	@ModelAttribute("paisesMap")
+	public Map<String,String> paisesMap(){
+
+		Map<String,String> paises = new HashMap<String,String>();
+		paises.put("ES", "España");
+		paises.put("MX", "Mexico");
+		paises.put("CO", "Colombia");
+		paises.put("PR", "Peru");
+		paises.put("VE", "Venezuela");
+		paises.put("GR", "Alemania");
+		
+		return paises;
 	}
 	
 	@GetMapping("/form")
