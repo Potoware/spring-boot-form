@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.potoware.springboot.form.editors.CargoPropertiesEditor;
 import com.potoware.springboot.form.editors.NombreMayusculaEditor;
 import com.potoware.springboot.form.models.domain.Cargo;
 import com.potoware.springboot.form.models.domain.Usuario;
+import com.potoware.springboot.form.services.CargoService;
 import com.potoware.springboot.form.validators.UsuarioValidador;
 
 @SessionAttributes("usuario")
@@ -33,39 +35,38 @@ public class FormController {
 	@Autowired
 	private UsuarioValidador validador;
 	
-	@ModelAttribute("cargos")
-	public List<Cargo> cargos(){
-		return Arrays.asList(
-				new Cargo(1,"AUX","Auxiliar"),
-				new Cargo(2,"CEO","Gerente"),
-				new Cargo(3,"ADM","Administrativa"),
-				new Cargo(4,"SOP","Soporte"),
-				new Cargo(5,"MER","Mercadeo"),
-				new Cargo(6,"COM","Comercial"),
-				new Cargo(7,"DEV","Desarrollo"));
-		
-	}
-	
-	@ModelAttribute("paises")
-	public List<String> paises(){
-		return Arrays.asList("Colombia","España","Chile","Bolivia","Alemania","Inglaterra");
-		
-	}
-	
-	@ModelAttribute("paisesMap")
-	public Map<String,String> paisesMap(){
+	@Autowired
+	private CargoService cargoService;
 
-		Map<String,String> paises = new HashMap<String,String>();
+	@Autowired
+	private CargoPropertiesEditor cargoEditor;
+	
+	@ModelAttribute("cargos")
+	public List<Cargo> cargos() {
+		return cargoService.listar();
+
+	}
+
+	@ModelAttribute("paises")
+	public List<String> paises() {
+		return Arrays.asList("Colombia", "España", "Chile", "Bolivia", "Alemania", "Inglaterra");
+
+	}
+
+	@ModelAttribute("paisesMap")
+	public Map<String, String> paisesMap() {
+
+		Map<String, String> paises = new HashMap<String, String>();
 		paises.put("ES", "España");
 		paises.put("MX", "Mexico");
 		paises.put("CO", "Colombia");
 		paises.put("PR", "Peru");
 		paises.put("VE", "Venezuela");
 		paises.put("GR", "Alemania");
-		
+
 		return paises;
 	}
-	
+
 	@GetMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("titulo", "Usuarios - Registro");
@@ -73,39 +74,39 @@ public class FormController {
 		usuario.setNombre("Jhon");
 		usuario.setApellido("Doe");
 		usuario.setIdentificador("112.254.354.K");
-		model.addAttribute("usuario",usuario);
-		
+		model.addAttribute("usuario", usuario);
+
 		return "form";
 	}
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.addValidators(validador);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setLenient(false);
-		binder.registerCustomEditor(Date.class,"fechaNacimiento" ,new CustomDateEditor(dateFormat, false));
-		
-		binder.registerCustomEditor(String.class,"nombre", new NombreMayusculaEditor());
-		binder.registerCustomEditor(String.class,"apellido", new NombreMayusculaEditor());
+		binder.registerCustomEditor(Date.class, "fechaNacimiento", new CustomDateEditor(dateFormat, false));
+
+		binder.registerCustomEditor(String.class, "nombre", new NombreMayusculaEditor());
+		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
+		binder.registerCustomEditor(Cargo.class, "cargo",  cargoEditor);
 	}
-	
+
 	@PostMapping("/form")
-	public String procesar(@Valid Usuario usuario, BindingResult result,Model model, SessionStatus status) {
-		//validador.validate(usuario, result); -- otra forma de validar
-		model.addAttribute("titulo","Resultado Formulario");
-		if(result.hasErrors()) {
-			
-			
-			/*Antigua forma
-			 * Map<String,String> errores = new HashMap<>();
-			result.getFieldErrors().forEach(err ->{
-				errores.put(err.getField(), "El campo ".concat(err.getField().concat(" ").concat(err.getDefaultMessage())));
-				});
-			model.addAttribute("error", errores);*/
+	public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
+		// validador.validate(usuario, result); -- otra forma de validar
+		model.addAttribute("titulo", "Resultado Formulario");
+		if (result.hasErrors()) {
+
+			/*
+			 * Antigua forma Map<String,String> errores = new HashMap<>();
+			 * result.getFieldErrors().forEach(err ->{ errores.put(err.getField(),
+			 * "El campo ".concat(err.getField().concat(" ").concat(err.getDefaultMessage())
+			 * )); }); model.addAttribute("error", errores);
+			 */
 			return "form";
 		}
-		
-		model.addAttribute("usuario",usuario);
+
+		model.addAttribute("usuario", usuario);
 		status.setComplete();
 		return "resultado";
 	}

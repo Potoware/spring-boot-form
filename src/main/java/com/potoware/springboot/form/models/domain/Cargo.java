@@ -1,10 +1,8 @@
 package com.potoware.springboot.form.models.domain;
 
-import javax.validation.constraints.NotNull;
-
 public class Cargo {
 	
-	@NotNull
+	
 	private Integer id;
 	private String codigo;
 	private String nombre;

@@ -2,7 +2,6 @@ package com.potoware.springboot.form.models.domain;
 
 import java.util.Date;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -48,7 +47,7 @@ public class Usuario {
 	@NotEmpty
 	private String pais;
 	
-	@Valid
+	@NotNull
 	private Cargo cargo;
 	
 	
