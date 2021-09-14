@@ -9,35 +9,39 @@
 </head>
 
 <body>
-<h1 th:text="${titulo}"></h1>
 
-<ul>
-<li th:text="${usuario.nombre}"></li>
-<li th:text="${usuario.apellido}"></li>
-<li th:text="${usuario.username}"></li>
-<li th:text="${usuario.password}"></li>
-<li th:text="${usuario.email}"></li>
-<li th:text="${usuario.identificador}"></li>
-<li th:text="${usuario.cuenta}"></li>
-<li th:text="${#dates.format(usuario.fechaNacimiento,'dd-MMM-yyyy')}"></li>
-<li th:text="${usuario.pais}"></li>
-<li th:text="${usuario.cargo.id}"></li>
-<li th:text="${usuario.cargo.codigo}"></li>
-<li th:text="${usuario.cargo.nombre}"></li>
-<li th:text="'Habilitado: '+${usuario.habilitar}"></li>
-<li th:text="'Genero: '+${usuario.genero}"></li>
-<li th:text="'Valor Secreto: '+${usuario.valorSecreto}"></li>
+<div class="container">
+<a th:href="@{/form}" class="btn btn-success my-3">Volver</a>
+<ul class="list-group my-3">
+<li th:text="${titulo}" class="list-group-item active"></li>
+<li th:text="${usuario.nombre}" class="list-group-item"></li>
+<li th:text="${usuario.apellido}" class="list-group-item"></li>
+<li th:text="${usuario.username}" class="list-group-item"></li>
+<li th:text="${usuario.password}" class="list-group-item"></li>
+<li th:text="${usuario.email}" class="list-group-item"></li>
+<li th:text="${usuario.identificador}" class="list-group-item"></li>
+<li th:text="${usuario.cuenta}" class="list-group-item"></li>
+<li th:text="${#dates.format(usuario.fechaNacimiento,'dd-MMM-yyyy')}" class="list-group-item"></li>
+<li th:text="${usuario.pais}" class="list-group-item"></li>
+<li th:text="${usuario.cargo.id}" class="list-group-item"></li>
+<li th:text="${usuario.cargo.codigo}" class="list-group-item"></li>
+<li th:text="${usuario.cargo.nombre}" class="list-group-item"></li>
+<li th:text="'Habilitado: '+${usuario.habilitar}" class="list-group-item"></li>
+<li th:text="'Genero: '+${usuario.genero}" class="list-group-item"></li>
+<li th:text="'Valor Secreto: '+${usuario.valorSecreto}" class="list-group-item"></li>
 
 </ul>
-<div>Roles</div>
-<ul >
-<li th:each="role: ${usuario.roles}" th:text="${role.id} + ' - ' + ${role.nombre} + ' - ' +${role.role}"></li>
+<ul  class="list-group my-3">
+<li th:text="'Roles'" class="list-group-item active"></li>
+<li th:each="role: ${usuario.roles}" th:text="${role.id} + ' - ' + ${role.nombre} + ' - ' +${role.role}" class="list-group-item"></li>
 </ul>
 
-<div>Intereses</div>
-<ul >
-<li th:each="inte: ${usuario.intereses}" th:text="${inte}"></li>
+<ul class="list-group my-3">
+<li th:text="'Intereses'" class="list-group-item active"></li>
+<li th:each="inte: ${usuario.intereses}" th:text="${inte}" class="list-group-item"></li>
 </ul>
+<a th:href="@{/form}" class="btn btn-success my-3">Volver</a>
+</div>
 </body>
 
 </html>
