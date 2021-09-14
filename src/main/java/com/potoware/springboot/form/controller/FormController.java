@@ -26,8 +26,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.potoware.springboot.form.editors.CargoPropertiesEditor;
 import com.potoware.springboot.form.editors.NombreMayusculaEditor;
 import com.potoware.springboot.form.models.domain.Cargo;
+import com.potoware.springboot.form.models.domain.Role;
 import com.potoware.springboot.form.models.domain.Usuario;
 import com.potoware.springboot.form.services.CargoService;
+import com.potoware.springboot.form.services.RoleService;
 import com.potoware.springboot.form.validators.UsuarioValidador;
 
 @SessionAttributes("usuario")
@@ -38,6 +40,9 @@ public class FormController {
 	
 	@Autowired
 	private CargoService cargoService;
+	
+	@Autowired
+	private RoleService roleService;
 
 	@Autowired
 	private CargoPropertiesEditor cargoEditor;
@@ -52,6 +57,12 @@ public class FormController {
 	public List<String> paises() {
 		return Arrays.asList("Colombia", "España", "Chile", "Bolivia", "Alemania", "Inglaterra");
 
+	}
+	
+	@ModelAttribute("listaRolesMap")
+	public List<Role> listaRoles(){
+		
+	return this.roleService.listar();
 	}
 	
 	@ModelAttribute("rolesList")

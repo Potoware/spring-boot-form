@@ -12,14 +12,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-
 import com.potoware.springboot.form.validators.IdentificadorRegex;
 import com.potoware.springboot.form.validators.Requerido;
 
 public class Usuario {
-	//@NotEmpty --Se validara desde una clase personalizada
+	// @NotEmpty --Se validara desde una clase personalizada
 	private String nombre;
-	//@NotEmpty --Se validara desde una clase personalizada
+	// @NotEmpty --Se validara desde una clase personalizada
 	@Requerido
 	private String apellido;
 	@NotBlank
@@ -30,35 +29,35 @@ public class Usuario {
 	@NotEmpty
 	@Email
 	private String email;
-	
-	//@Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][A-Z]{1}") --Se validara desde una clase personalizada
+
+	// @Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][A-Z]{1}") --Se validara
+	// desde una clase personalizada
 	@IdentificadorRegex()
 	private String identificador;
-	
+
 	@NotNull
 	@Min(5)
 	@Max(5000)
 	private Integer cuenta;
-	
+
 	@NotNull
 	@Past
-	//@DateTimeFormat(pattern="yyyy-MM-dd") -- Forma para revisar la forma en la que se recibe la fecha
+	// @DateTimeFormat(pattern="yyyy-MM-dd") -- Forma para revisar la forma en la
+	// que se recibe la fecha
 	private Date fechaNacimiento;
-	
+
 	@NotEmpty
 	private String pais;
-	
+
 	@NotNull
 	private Cargo cargo;
-	
+
 	@NotEmpty
-	private List<String> roles;
-	
+	private List<Role> roles;
+
 	@NotEmpty
 	private List<String> intereses;
-	
-		
-	
+
 	public List<String> getIntereses() {
 		return intereses;
 	}
@@ -147,13 +146,12 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public List<String> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
-	
 }

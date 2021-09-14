@@ -98,12 +98,13 @@
 		<div th:if="${#fields.hasErrors('cargo')}" th:errors="*{cargo}"></div>
 	</div>
 	
+	
 		<div>
 			<label>Roles:</label>
-			<div th:each="role: ${rolesList}" th:value="${role}">
+			<div th:each="role: ${listaRolesMap}" th:value="${role}">
 				
-				<input  type="checkbox" th:field="*{roles}" th:value="${role}">
-				<label th:for="${#ids.prev('roles')}" th:text="${role}"></label>
+				<input  type="checkbox" th:field="*{roles}" th:value="${role.id}">
+				<label th:for="${#ids.prev('roles')}" th:text="${role.nombre}"></label>
 		
 			</div>
 				
