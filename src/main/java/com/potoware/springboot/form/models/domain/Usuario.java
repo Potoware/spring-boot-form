@@ -43,9 +43,21 @@ public class Usuario {
 	@Past
 	//@DateTimeFormat(pattern="yyyy-MM-dd") -- Forma para revisar la forma en la que se recibe la fecha
 	private Date fechaNacimiento;
-		
+	
+	@NotEmpty
+	private String pais;
 	
 	
+	
+	
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}

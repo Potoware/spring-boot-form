@@ -1,7 +1,9 @@
 package com.potoware.springboot.form.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -13,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -26,6 +29,12 @@ import com.potoware.springboot.form.validators.UsuarioValidador;
 public class FormController {
 	@Autowired
 	private UsuarioValidador validador;
+	
+	@ModelAttribute("paises")
+	public List<String> paises(){
+		return Arrays.asList("Colombia","España","Chile","Bolivia","Alemania","Inglaterra");
+		
+	}
 	
 	@GetMapping("/form")
 	public String form(Model model) {
