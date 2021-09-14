@@ -1,6 +1,7 @@
 package com.potoware.springboot.form.models.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -50,8 +51,9 @@ public class Usuario {
 	@NotNull
 	private Cargo cargo;
 	
-	
-	
+	@NotEmpty
+	private List<String> roles;
+		
 	
 	public Cargo getCargo() {
 		return cargo;
@@ -133,4 +135,13 @@ public class Usuario {
 		this.email = email;
 	}
 
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
+	
 }

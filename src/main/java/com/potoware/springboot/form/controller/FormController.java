@@ -1,6 +1,7 @@
 package com.potoware.springboot.form.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -52,7 +53,17 @@ public class FormController {
 		return Arrays.asList("Colombia", "España", "Chile", "Bolivia", "Alemania", "Inglaterra");
 
 	}
+	
+	@ModelAttribute("rolesList")
+	public List<String> rolesList() {
+		List<String> roles = new ArrayList<>();
+		roles.add("ROLE_ADMIN");
+		roles.add("ROLE_USER");
+		roles.add("ROLE_MODERATOR");
 
+		return roles;
+	}
+	
 	@ModelAttribute("paisesMap")
 	public Map<String, String> paisesMap() {
 

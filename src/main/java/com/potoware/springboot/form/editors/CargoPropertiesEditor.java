@@ -15,14 +15,14 @@ public class CargoPropertiesEditor extends PropertyEditorSupport {
 
 	@Override
 	public void setAsText(String idString) throws IllegalArgumentException {
-		
-			try {
-				Integer id = Integer.parseInt(idString);
-				this.setValue(cargoService.obtenerPorId(id));
-			} catch (NumberFormatException e) {
-				setValue(null);
-			}
-		
+
+		try {
+			Integer id = Integer.parseInt(idString);
+			this.setValue(cargoService.obtenerPorId(id));
+		} catch (NumberFormatException e) {
+			setValue(null);
+		}
+
 	}
 
 }
