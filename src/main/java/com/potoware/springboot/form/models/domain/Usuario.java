@@ -5,12 +5,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.potoware.springboot.form.validators.IdentificadorRegex;
+
 public class Usuario {
 	//@NotEmpty --Se validara desde una clase personalizada
 	private String nombre;
 	@NotEmpty
 	private String apellido;
-	
+	@NotBlank
 	@Size(min = 3, max = 8)
 	private String username;
 	@NotEmpty
@@ -19,6 +21,7 @@ public class Usuario {
 	@Email
 	private String email;
 	//@Pattern(regexp = "[0-9]{2}[.][0-9]{3}[.][0-9]{3}[-][A-Z]{1}") --Se validara desde una clase personalizada
+	@IdentificadorRegex()
 	private String identificador;
 
 	
