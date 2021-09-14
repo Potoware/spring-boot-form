@@ -1,17 +1,21 @@
 package com.potoware.springboot.form.models.domain;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class Usuario {
-	@NotEmpty
+	@NotEmpty(message="El nombre no puede ser vacio")
 	private String nombre;
-	@NotEmpty
+	@NotEmpty(message="El apellido no puede ser vacio")
 	private String apellido;
-	@NotEmpty
+	@NotEmpty(message="El username no puede ser vacio")
+	@Size(min = 3, max = 8)
 	private String username;
 	@NotEmpty
 	private String password;
 	@NotEmpty
+	@Email(message="El correo no cumple con el formato")
 	private String email;
 	
 	private String identificador;
