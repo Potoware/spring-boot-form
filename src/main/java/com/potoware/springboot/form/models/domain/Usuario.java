@@ -6,11 +6,13 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.potoware.springboot.form.validators.IdentificadorRegex;
+import com.potoware.springboot.form.validators.Requerido;
 
 public class Usuario {
 	//@NotEmpty --Se validara desde una clase personalizada
 	private String nombre;
-	@NotEmpty
+	//@NotEmpty --Se validara desde una clase personalizada
+	@Requerido
 	private String apellido;
 	@NotBlank
 	@Size(min = 3, max = 8)
