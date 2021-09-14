@@ -22,7 +22,7 @@ public class FormController {
 		Usuario usuario = new Usuario();
 		usuario.setNombre("Jhon");
 		usuario.setApellido("Doe");
-		usuario.setIdentificador("1012.254.K");
+		usuario.setIdentificador("112.254.354.K");
 		model.addAttribute("usuario",usuario);
 		
 		return "form";
