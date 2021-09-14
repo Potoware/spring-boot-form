@@ -63,7 +63,18 @@ public class Usuario {
 	@NotEmpty
 	private String genero;
 	
+	private String valorSecreto;
 	
+	
+	
+
+	public String getValorSecreto() {
+		return valorSecreto;
+	}
+
+	public void setValorSecreto(String valorSecreto) {
+		this.valorSecreto = valorSecreto;
+	}
 
 	public String getGenero() {
 		return genero;
