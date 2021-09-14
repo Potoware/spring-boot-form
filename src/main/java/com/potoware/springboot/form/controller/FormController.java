@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.potoware.springboot.form.editors.NombreMayusculaEditor;
+import com.potoware.springboot.form.models.domain.Cargo;
 import com.potoware.springboot.form.models.domain.Usuario;
 import com.potoware.springboot.form.validators.UsuarioValidador;
 
@@ -31,6 +32,19 @@ import com.potoware.springboot.form.validators.UsuarioValidador;
 public class FormController {
 	@Autowired
 	private UsuarioValidador validador;
+	
+	@ModelAttribute("cargos")
+	public List<Cargo> cargos(){
+		return Arrays.asList(
+				new Cargo(1,"AUX","Auxiliar"),
+				new Cargo(2,"CEO","Gerente"),
+				new Cargo(3,"ADM","Administrativa"),
+				new Cargo(4,"SOP","Soporte"),
+				new Cargo(5,"MER","Mercadeo"),
+				new Cargo(6,"COM","Comercial"),
+				new Cargo(7,"DEV","Desarrollo"));
+		
+	}
 	
 	@ModelAttribute("paises")
 	public List<String> paises(){

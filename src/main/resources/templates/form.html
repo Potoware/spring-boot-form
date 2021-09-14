@@ -8,14 +8,14 @@
 </head>
 
 <body>
-<h1 th:text="${titulo}"></h1>
+	<h1 th:text="${titulo}"></h1>
 	<form th:action="@{/form}" th:object="${usuario}" method="POST">
-	<div>
-		<label for="identificador">ID:</label>
 		<div>
-			<input  id="nombre" type="text" th:field="*{identificador}">
-		</div>
-		<div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
+			<label for="identificador">ID:</label>
+			<div>
+				<input id="nombre" type="text" th:field="*{identificador}">
+			</div>
+			<div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
 	</div>
 	
 	<div>
@@ -77,7 +77,7 @@
 	</div>
 	
 	<div>
-		<label for="pais">País:</label>
+		<label for="pais.id">País:</label>
 		<div>
 			<select id="pais"  th:field="*{pais}">
 			<option value="">---Seleccione una opción</option>
@@ -85,6 +85,17 @@
 			</select>
 		</div>
 		<div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+	</div>
+	
+		<div>
+		<label for="cargo">Cargo:</label>
+		<div>
+			<select id="cargo"  th:field="*{cargo.id}">
+			<option value="">---Seleccione una opción</option>
+			<option th:each="cargo: ${cargos}" th:text="${cargo.nombre}" th:value="${cargo.id}"></option>
+			</select>
+		</div>
+		<div th:if="${#fields.hasErrors('cargo.id')}" th:errors="*{cargo.id}"></div>
 	</div>
 	
 	
