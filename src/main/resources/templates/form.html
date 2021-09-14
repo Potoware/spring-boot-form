@@ -114,6 +114,21 @@
 	</div>
 	
 	<div>
+			<label>Roles:</label>
+			<div th:each="inte: ${interesesMap.entrySet()}">
+				
+				<input  type="checkbox" th:field="*{intereses}" th:value="${inte.key}">
+				<label th:for="${#ids.prev('intereses')}" th:text="${inte.value}"></label>
+		
+			</div>
+				
+			
+			
+			
+			<div th:if="${#fields.hasErrors('intereses')}" th:errors="*{intereses}"></div>
+	</div>
+	
+	<div>
 		<div>
 			<input  type="submit" value="Enviar">
 		</div>

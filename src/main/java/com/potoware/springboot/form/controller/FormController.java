@@ -78,6 +78,20 @@ public class FormController {
 		return paises;
 	}
 
+	@ModelAttribute("interesesMap")
+	public Map<String, String> interesesMap() {
+
+		Map<String, String> intereses = new HashMap<String, String>();
+		intereses.put("INT_MUSICA", "Musica");
+		intereses.put("INT_VIDEOJUEGOS", "Video Juegos");
+		intereses.put("INT_LITERATURA", "Literatura");
+		intereses.put("INT_ESTUDIO", "Estudio");
+		intereses.put("INT_DEPORTES", "Deportes");
+		intereses.put("GR", "Alemania");
+
+		return intereses;
+	}
+	
 	@GetMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("titulo", "Usuarios - Registro");

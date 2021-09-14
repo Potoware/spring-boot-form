@@ -53,8 +53,20 @@ public class Usuario {
 	
 	@NotEmpty
 	private List<String> roles;
+	
+	@NotEmpty
+	private List<String> intereses;
+	
 		
 	
+	public List<String> getIntereses() {
+		return intereses;
+	}
+
+	public void setIntereses(List<String> intereses) {
+		this.intereses = intereses;
+	}
+
 	public Cargo getCargo() {
 		return cargo;
 	}
