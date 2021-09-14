@@ -9,29 +9,30 @@
 
 <body>
 <h1 th:text="${titulo}"></h1>
-	<form th:action="@{/form}" method="POST">
+	<form th:action="@{/form}" th:object="${usuario}" method="POST">
 	<div>
 		<label for="username">Username:</label>
 		<div>
-			<input name="username" id="username" type="text">
+			<input  id="username" type="text" th:field="*{username}">
 		</div>
-		<div th:if="${error != null && error.containsKey('username')}" th:text="${error.username}"></div>
+		<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
 	</div>
 	
 	<div>
 		<label for="password">Password:</label>
 		<div>
-			<input name="password" id="password" type="password">
+			<input id="password" type="password" th:field="*{password}">
 		</div>
-		<div th:if="${error != null && error.containsKey('password')}" th:text="${error.password}"></div>
+		<!--	<div th:if="${error != null && error.containsKey('password')}" th:text="${error.password}"></div> Forma antigua para errores-->
+		<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
 	</div>
 	
 	<div>
 		<label for="email">E-mail:</label>
 		<div>
-			<input name="email" id="email" type="email">
+			<input id="email" type="email" th:field="*{email}">
 		</div>
-		<div th:if="${error != null && error.containsKey('email')}" th:text="${error.email}"></div>
+		<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 	</div>
 	
 	<div>
