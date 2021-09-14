@@ -23,11 +23,12 @@
 <li th:text="${usuario.cargo.id}"></li>
 <li th:text="${usuario.cargo.codigo}"></li>
 <li th:text="${usuario.cargo.nombre}"></li>
+<li th:text="'Habilitado: '+${usuario.habilitar}"></li>
 
 </ul>
 <div>Roles</div>
 <ul >
-<li th:each="role: ${usuario.roles}" th:text="${role}"></li>
+<li th:each="role: ${usuario.roles}" th:text="${role.id} + ' - ' + ${role.nombre} + ' - ' +${role.role}"></li>
 </ul>
 
 <div>Intereses</div>

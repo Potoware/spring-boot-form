@@ -25,6 +25,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.potoware.springboot.form.editors.CargoPropertiesEditor;
 import com.potoware.springboot.form.editors.NombreMayusculaEditor;
+import com.potoware.springboot.form.editors.RolesEditor;
 import com.potoware.springboot.form.models.domain.Cargo;
 import com.potoware.springboot.form.models.domain.Role;
 import com.potoware.springboot.form.models.domain.Usuario;
@@ -46,6 +47,12 @@ public class FormController {
 
 	@Autowired
 	private CargoPropertiesEditor cargoEditor;
+	
+
+	@Autowired
+	private RolesEditor roleEditor;
+	
+	
 	
 	@ModelAttribute("cargos")
 	public List<Cargo> cargos() {
@@ -109,7 +116,8 @@ public class FormController {
 		Usuario usuario = new Usuario();
 		usuario.setNombre("Jhon");
 		usuario.setApellido("Doe");
-		usuario.setIdentificador("112.254.354.K");
+		usuario.setIdentificador("12.254.354-K");
+		usuario.setHabilitar(true);
 		model.addAttribute("usuario", usuario);
 
 		return "form";
@@ -125,6 +133,7 @@ public class FormController {
 		binder.registerCustomEditor(String.class, "nombre", new NombreMayusculaEditor());
 		binder.registerCustomEditor(String.class, "apellido", new NombreMayusculaEditor());
 		binder.registerCustomEditor(Cargo.class, "cargo",  cargoEditor);
+		binder.registerCustomEditor(Role.class, "roles",  roleEditor);
 	}
 
 	@PostMapping("/form")

@@ -121,12 +121,17 @@
 				<input  type="checkbox" th:field="*{intereses}" th:value="${inte.key}">
 				<label th:for="${#ids.prev('intereses')}" th:text="${inte.value}"></label>
 		
+			</div>	
+			
+			<div th:if="${#fields.hasErrors('intereses')}" th:errors="*{intereses}"></div>	
+	</div>
+	
+	
+	<div>
+			<label for="habilitar">Habilitar:</label>
+			<div>
+				<input id="habilitar" type="checkbox" th:field="*{habilitar}">
 			</div>
-				
-			
-			
-			
-			<div th:if="${#fields.hasErrors('intereses')}" th:errors="*{intereses}"></div>
 	</div>
 	
 	<div>

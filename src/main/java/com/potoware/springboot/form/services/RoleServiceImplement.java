@@ -16,7 +16,7 @@ public class RoleServiceImplement implements RoleService {
 	public RoleServiceImplement() {
 		this.lista = new ArrayList<>();
 		this.lista.add(new Role(1, "Administrador", "ROLE_ADMIN"));
-		this.lista.add(new Role(2, "usuario", "ROLE_USER"));
+		this.lista.add(new Role(2, "Usuario", "ROLE_USER"));
 		this.lista.add(new Role(3, "Moderador", "ROLE_MODERATOR"));
 	}
 
