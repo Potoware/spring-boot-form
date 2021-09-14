@@ -82,6 +82,11 @@ public class FormController {
 		return roles;
 	}
 	
+	@ModelAttribute("genero")
+	public List<String> genero(){
+		return Arrays.asList("Hombre", "Mujer","Prefiero No decirlo");
+	}
+	
 	@ModelAttribute("paisesMap")
 	public Map<String, String> paisesMap() {
 
