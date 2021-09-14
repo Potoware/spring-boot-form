@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.potoware.springboot.form.validators.IdentificadorRegex;
 import com.potoware.springboot.form.validators.Requerido;
@@ -42,11 +41,9 @@ public class Usuario {
 	
 	@NotNull
 	@Past
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	//@DateTimeFormat(pattern="yyyy-MM-dd") -- Forma para revisar la forma en la que se recibe la fecha
 	private Date fechaNacimiento;
-	
-	
-	
+		
 	
 	
 	public Date getFechaNacimiento() {
