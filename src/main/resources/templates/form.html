@@ -9,9 +9,7 @@
 </head>
 
 <body>
-<div class="alert alert-success">
-<span th:text="'Tiempo Transcurrido: '+${tiempoTranscurrido} + ' en milisegundos'"></span>
-</div>
+<section th:replace="componentes/tiempoTranscurrido :: interceptorTiempoTranscurrido"></section>
 	<h1 th:text="${titulo}"></h1>
 	<div class="container">
 		<form th:action="@{/form}" th:object="${usuario}" method="POST">
